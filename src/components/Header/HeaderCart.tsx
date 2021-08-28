@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from '@chakra-ui/react';
-import { CartContext } from '../../store/cart-context';
+import { CartContext } from '../../context/cart-context';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { useDisclosure } from '@chakra-ui/react';
 import { Cart } from '../Cart/Cart';

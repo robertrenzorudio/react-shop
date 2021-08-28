@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../store/cart-context';
+import { CartContext } from '../../context/cart-context';
 import { Flex } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
 import { InventoryItemType } from '../../interface/InventoryItemType';
