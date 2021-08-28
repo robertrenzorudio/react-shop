@@ -21,9 +21,6 @@ export const InventoryBody: React.FC<InventoryBodyProps> = ({
 }) => {
   const itemRef = useRef<HTMLInputElement>(null);
 
-  const addToCartHandler = () => {
-    onAddToCart(+itemRef.current!.value);
-  };
   return (
     <Stack pt={10} align={'center'}>
       <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
@@ -50,7 +47,7 @@ export const InventoryBody: React.FC<InventoryBodyProps> = ({
             aria-label="Add to cart"
             isRound={true}
             colorScheme="teal"
-            onClick={addToCartHandler}
+            onClick={onAddToCart.bind(null, item.id)}
           />
         </form>
       </HStack>

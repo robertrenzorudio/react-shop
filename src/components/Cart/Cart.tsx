@@ -8,8 +8,8 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Text,
 } from '@chakra-ui/react';
+import { CartItem } from './CartItem';
 
 interface CartProps {
   cartIsOpen: boolean;
@@ -28,10 +28,7 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text fontWeight="bold" mb="1rem">
-              You can scroll the content behind the modal
-            </Text>
-            fefefefe
+            <CartItem />
           </ModalBody>
 
           <ModalFooter>

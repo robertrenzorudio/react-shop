@@ -6,13 +6,15 @@ import { ColorModeSwitch } from './ColorModeSwitch';
 import { IconButtonWrapper } from './IconButtonWrapper';
 import { HeaderCart } from './HeaderCart';
 
-interface MenuProps {}
+interface MenuProps {
+  onCartOpen: () => void;
+}
 
-export const HeaderMenu: React.FC<MenuProps> = () => {
+export const HeaderMenu: React.FC<MenuProps> = ({ onCartOpen }) => {
   return (
     <Box>
       <HStack spacing="10px">
-        <HeaderCart />
+        <HeaderCart onCartOpen={onCartOpen} />
         <ColorModeSwitch />
         <Link href="https://www.github.com/robertrenzorudio">
           <IconButtonWrapper

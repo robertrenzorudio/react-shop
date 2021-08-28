@@ -3,14 +3,16 @@ import { Logo } from './Logo';
 import { HeaderMenu } from './HeaderMenu';
 import { Flex, Spacer } from '@chakra-ui/react';
 
-interface HeaderProps {}
+interface HeaderProps {
+  onCartOpen: () => void;
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ onCartOpen }) => {
   return (
     <Flex as="nav" align="center" w="100%" px={3} boxShadow="base">
       <Logo />
       <Spacer />
-      <HeaderMenu />
+      <HeaderMenu onCartOpen={onCartOpen} />
     </Flex>
   );
 };
