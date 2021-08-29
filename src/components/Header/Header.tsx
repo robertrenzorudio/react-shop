@@ -7,7 +7,7 @@ interface HeaderProps {
   onCartOpen: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onCartOpen }) => {
+export const Header: React.FC<HeaderProps> = ({ onCartOpen }) => {
   return (
     <Flex as="nav" align="center" w="100%" px={3} boxShadow="base">
       <Logo />
@@ -16,5 +16,3 @@ const Header: React.FC<HeaderProps> = ({ onCartOpen }) => {
     </Flex>
   );
 };
-
-export default Header;
