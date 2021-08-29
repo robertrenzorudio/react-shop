@@ -16,7 +16,7 @@ export const HeaderMenu: React.FC<MenuProps> = ({ onCartOpen }) => {
       <HStack spacing="10px">
         <HeaderCart onCartOpen={onCartOpen} />
         <ColorModeSwitch />
-        <Link href="https://www.github.com/robertrenzorudio">
+        <Link href="https://www.github.com/robertrenzorudio/react-shop">
           <IconButtonWrapper
             icon={<FaGithub />}
             aria-label="Open github link"
