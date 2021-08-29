@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Heading,
   Text,
@@ -12,15 +12,13 @@ import { InventoryItemType } from '../../interface/InventoryItemType';
 
 interface InventoryBodyProps {
   item: InventoryItemType;
-  onAddToCart: (id: number) => void;
+  onAddToCart: (id: InventoryItemType) => void;
 }
 
 export const InventoryBody: React.FC<InventoryBodyProps> = ({
   item,
   onAddToCart,
 }) => {
-  const itemRef = useRef<HTMLInputElement>(null);
-
   return (
     <Stack pt={10} align={'center'}>
       <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
@@ -34,22 +32,13 @@ export const InventoryBody: React.FC<InventoryBodyProps> = ({
           {item.formattedPrice}
         </Text>
         <Spacer />
-        <form>
-          <input
-            ref={itemRef}
-            type="hidden"
-            id="itemId"
-            name="itemId"
-            value={item.id}
-          />
-          <IconButton
-            icon={<RiShoppingCartLine />}
-            aria-label="Add to cart"
-            isRound={true}
-            colorScheme="teal"
-            onClick={onAddToCart.bind(null, item.id)}
-          />
-        </form>
+        <IconButton
+          icon={<RiShoppingCartLine />}
+          aria-label="Add to cart"
+          isRound={true}
+          colorScheme="teal"
+          onClick={onAddToCart.bind(null, item)}
+        />
       </HStack>
     </Stack>
   );

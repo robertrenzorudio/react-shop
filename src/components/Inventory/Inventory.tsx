@@ -11,9 +11,7 @@ interface InventoryProps {
 export const Inventory: React.FC<InventoryProps> = ({ invetoryItems }) => {
   const cartCtx = useContext(CartContext);
 
-  const addToCartHandler = (id: number) => {
-    const item = invetoryItems.find(({ id: itemId }) => itemId === id);
-
+  const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item!);
   };
 

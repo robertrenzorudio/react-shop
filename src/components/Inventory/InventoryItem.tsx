@@ -7,7 +7,7 @@ import { InventoryItemType } from '../../interface/InventoryItemType';
 
 interface InventoryItemProps {
   item: InventoryItemType;
-  onAddToCart: (id: number) => void;
+  onAddToCart: (item: InventoryItemType) => void;
 }
 export const InventoryItem: React.FC<InventoryItemProps> = (props) => {
   return (
