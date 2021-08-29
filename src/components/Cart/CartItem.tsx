@@ -1,23 +1,53 @@
 import React from 'react';
-import { Box, Flex, IconButton } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  IconButton,
+  HStack,
+  Text,
+  Spacer,
+  Divider,
+} from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { CartItemType } from '../../interface/CartItemType';
+import { InventoryItemType } from '../../interface/InventoryItemType';
 
-interface CartItemProps {}
+interface CartItemProps {
+  item: CartItemType;
+  onAdd: (id: InventoryItemType) => void;
+  onRemove: (item: InventoryItemType) => void;
+}
 
-export const CartItem: React.FC<CartItemProps> = () => {
+export const CartItem: React.FC<CartItemProps> = ({
+  item,
+  onAdd,
+  onRemove,
+}) => {
   return (
-    <Flex align="center">
-      <Box>Hello</Box>
-      <Box>
-        <IconButton
-          onClick={() => {
-            alert('fds');
-          }}
-          icon={<MinusIcon />}
-          aria-label="Add item"
-        />
-        <IconButton icon={<AddIcon />} aria-label="Remove item" />
-      </Box>
-    </Flex>
+    <>
+      <Flex align="center" marginBottom="2">
+        <Box>
+          <Text fontWeight="extrabold">{item.name}</Text>
+          <Text color="gray.500">${item.price}</Text>
+        </Box>
+        <Spacer />
+        <HStack boxShadow="lg" borderRadius="10">
+          <IconButton
+            variant="ghost"
+            icon={<MinusIcon />}
+            aria-label="Add item"
+            onClick={onRemove.bind(null, item)}
+          />
+          <Text>{item.amount}</Text>
+          <IconButton
+            variant="ghost"
+            icon={<AddIcon />}
+            aria-label="Remove item"
+            onClick={onAdd.bind(null, item)}
+          />
+        </HStack>
+      </Flex>
+      <Divider />
+    </>
   );
 };
