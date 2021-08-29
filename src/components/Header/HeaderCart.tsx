@@ -12,7 +12,6 @@ export const HeaderCart: React.FC<HeaderCartProps> = ({ onCartOpen }) => {
   const numCartTotal = cartCtx.items.reduce((curNum, item) => {
     return curNum + item.amount;
   }, 0);
-  console.log(cartCtx.items);
 
   return (
     <>
