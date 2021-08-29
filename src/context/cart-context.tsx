@@ -1,17 +1,17 @@
 import React from 'react';
-import { CartItem } from '../interface/CartItem';
+import { CartItemType } from '../interface/CartItemType';
 import { InventoryItemType } from '../interface/InventoryItemType';
 
 interface CartCtx {
-  items: CartItem[];
+  items: CartItemType[];
   totalAmount: number;
   addItem: (item: InventoryItemType) => void;
-  removeItem: (id: number) => void;
+  removeItem: (item: InventoryItemType) => void;
 }
 
 export const CartContext = React.createContext<CartCtx>({
   items: [],
   totalAmount: 0,
   addItem: (item: InventoryItemType) => {},
-  removeItem: (id: number) => {},
+  removeItem: (item: InventoryItemType) => {},
 });

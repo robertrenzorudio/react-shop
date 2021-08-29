@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import { CartItem } from '../interface/CartItem';
+import { CartItemType } from '../interface/CartItemType';
 import { InventoryItemType } from '../interface/InventoryItemType';
 import { CartContext } from './cart-context';
 
 type CartState = {
-  items: CartItem[];
+  items: CartItemType[];
   totalAmount: number;
 };
 
@@ -15,28 +15,54 @@ type CartAction = {
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case 'ADD_ITEM': {
       const updatedTotalAmount = state.totalAmount + action.payload.price;
-      const payloadItemIndex = state.items.findIndex(
+
+      const updateIndex = state.items.findIndex(
         ({ id }) => id === action.payload.id
       );
 
       let updatedItems = [...state.items];
-      if (payloadItemIndex >= 0) {
-        const itemOnCurrState = state.items[payloadItemIndex];
+      if (updateIndex >= 0) {
+        const itemToUpdate = state.items[updateIndex];
         const updatedItem = {
-          ...itemOnCurrState,
-          amount: itemOnCurrState.amount + 1,
+          ...itemToUpdate,
+          amount: itemToUpdate.amount + 1,
         };
-        updatedItems[payloadItemIndex] = updatedItem;
+        updatedItems[updateIndex] = updatedItem;
       } else {
         updatedItems = state.items.concat({ ...action.payload, amount: 1 });
       }
 
-      console.log(updatedItems);
       return { items: updatedItems, totalAmount: updatedTotalAmount };
-    default:
+    }
+
+    case 'REMOVE_ITEM': {
+      const updatedTotalAmount = state.totalAmount - action.payload.price;
+
+      const updateIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const itemToUpdate = state.items[updateIndex];
+
+      let updatedItems = [...state.items];
+      if (itemToUpdate.amount === 1) {
+        updatedItems = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      } else {
+        const updatedItem = {
+          ...itemToUpdate,
+          amount: itemToUpdate.amount - 1,
+        };
+        updatedItems[updateIndex] = updatedItem;
+      }
+      return { items: updatedItems, totalAmount: updatedTotalAmount };
+    }
+
+    default: {
       return state;
+    }
   }
 };
 
@@ -50,13 +76,16 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const addItemToCart = (item: InventoryItemType) => {
     dispatchCart({ type: 'ADD_ITEM', payload: item });
   };
-  const addItemFromCart = (id: number) => {};
+
+  const removeItemFromCart = (item: InventoryItemType) => {
+    dispatchCart({ type: 'REMOVE_ITEM', payload: item });
+  };
 
   const cartContext = {
     items: cart.items,
     totalAmount: cart.totalAmount,
     addItem: addItemToCart,
-    removeItem: addItemFromCart,
+    removeItem: removeItemFromCart,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
