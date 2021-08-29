@@ -1,5 +1,5 @@
 import { InventoryItemType } from './InventoryItemType';
 
-export interface CartItem extends InventoryItemType {
+export interface CartItemType extends InventoryItemType {
   amount: number;
 }
