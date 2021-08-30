@@ -8,16 +8,15 @@ export const InventoryItemContainer: React.FC<InventoryItemContainerProps> = ({
   children,
 }) => {
   return (
-    <Center py={12}>
+    <Center>
       <Box
         role={'group'}
         p={6}
         maxW={'330px'}
         w={'full'}
-        boxShadow="2xl"
+        boxShadow="base"
         rounded={'lg'}
-        pos={'relative'}
-        zIndex={1}
+        mb="1.5rem"
       >
         {children}
       </Box>

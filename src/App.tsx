@@ -17,7 +17,7 @@ export const App = () => {
     <ChakraProvider theme={theme}>
       <CartProvider>
         <Cart cartIsOpen={cartIsOpen} onCartClose={onCartClose}></Cart>
-        <VStack>
+        <VStack spacing="1rem">
           <Header onCartOpen={onCartOpen}></Header>
           <Inventory invetoryItems={INVENTORY} />
         </VStack>

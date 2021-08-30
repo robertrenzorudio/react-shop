@@ -21,6 +21,7 @@ export const HeaderCart: React.FC<HeaderCartProps> = ({ onCartOpen }) => {
         aria-label="Open cart"
         colorScheme="teal"
         onClick={onCartOpen}
+        w="70px"
       >
         {numCartTotal}
       </Button>

@@ -32,6 +32,7 @@ export const InventoryBody: React.FC<InventoryBodyProps> = ({
           {item.formattedPrice}
         </Text>
         <Spacer />
+        <Spacer />
         <IconButton
           icon={<RiShoppingCartLine />}
           aria-label="Add to cart"

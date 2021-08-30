@@ -1,19 +1,17 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/layout';
+import { IconButton } from '@chakra-ui/button';
+import { SiNintendogamecube } from 'react-icons/si';
 
 interface LogoProps {}
 
 export const Logo: React.FC<LogoProps> = () => {
   return (
-    <Box>
-      <Text
-        bgGradient={`linear(to-r, #03c8a8, #89d8d3)`}
-        bgClip="text"
-        fontSize="5xl"
-        fontWeight="extrabold"
-      >
-        React Store
-      </Text>
-    </Box>
+    <IconButton
+      aria-label="Home"
+      colorScheme="linkedin"
+      bgClip="border-box"
+      variant="ghost"
+      icon={<SiNintendogamecube size={50} />}
+    />
   );
 };

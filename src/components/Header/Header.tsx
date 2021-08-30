@@ -1,7 +1,7 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { HeaderMenu } from './HeaderMenu';
-import { Flex, Spacer } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 interface HeaderProps {
   onCartOpen: () => void;
@@ -9,9 +9,18 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onCartOpen }) => {
   return (
-    <Flex as="nav" align="center" w="100%" px={3} boxShadow="base">
+    <Flex
+      p={4}
+      w="100%"
+      align="center"
+      justifyContent="space-between"
+      boxShadow="base"
+      position="sticky"
+      top={0}
+      zIndex={1}
+      backdropFilter="blur(10px)"
+    >
       <Logo />
-      <Spacer />
       <HeaderMenu onCartOpen={onCartOpen} />
     </Flex>
   );
