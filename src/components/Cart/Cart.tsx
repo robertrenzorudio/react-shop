@@ -56,7 +56,12 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   let itemsJSX = cartIsEmpty ? cartEmptyJSX : cartItemsJSX;
 
   return (
-    <Modal isOpen={cartIsOpen} onClose={onCartClose} size="lg">
+    <Modal
+      blockScrollOnMount={false}
+      isOpen={cartIsOpen}
+      onClose={onCartClose}
+      size="lg"
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>

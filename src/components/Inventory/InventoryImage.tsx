@@ -9,10 +9,10 @@ export const InventoryImage: React.FC<InventoryImageProps> = ({ src }) => {
   return (
     <>
       <Image
-        rounded={'lg'}
+        rounded="lg"
         height={230}
         width={282}
-        objectFit={'cover'}
+        objectFit="contain"
         src={src}
       />
     </>

@@ -7,6 +7,7 @@ import {
   Text,
   Spacer,
   Divider,
+  Image,
 } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { CartItemType } from '../../interface/CartItemType';
@@ -25,7 +26,14 @@ export const CartItem: React.FC<CartItemProps> = ({
 }) => {
   return (
     <>
-      <Flex align="center" marginBottom="2">
+      <Flex align="center" marginBottom="2" h="70px" p={2}>
+        <Image
+          src={item.imgSrc}
+          h="90%"
+          w={70}
+          mr={5}
+          objectFit="contain"
+        ></Image>
         <Box>
           <Text fontWeight="extrabold">{item.name}</Text>
           <Text color="gray.500">${item.price}</Text>
