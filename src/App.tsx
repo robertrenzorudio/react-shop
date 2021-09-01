@@ -4,8 +4,6 @@ import { Header } from './components/Header/Header';
 import { Inventory } from './components/Inventory/Inventory';
 import { CartProvider } from './context/CartProvider';
 import { Cart } from './components/Cart/Cart';
-import INVENTORY from './data/inventory';
-
 export const App = () => {
   const {
     isOpen: cartIsOpen,
@@ -19,7 +17,7 @@ export const App = () => {
         <Cart cartIsOpen={cartIsOpen} onCartClose={onCartClose}></Cart>
         <VStack spacing="1rem">
           <Header onCartOpen={onCartOpen}></Header>
-          <Inventory invetoryItems={INVENTORY} />
+          <Inventory />
         </VStack>
       </CartProvider>
     </ChakraProvider>
