@@ -7,14 +7,12 @@ interface InventoryImageProps {
 
 export const InventoryImage: React.FC<InventoryImageProps> = ({ src }) => {
   return (
-    <>
-      <Image
-        rounded="lg"
-        height={230}
-        width={282}
-        objectFit="contain"
-        src={src}
-      />
-    </>
+    <Image
+      rounded="lg"
+      height={230}
+      width={282}
+      objectFit="contain"
+      src={src}
+    />
   );
 };
