@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { CartItemType } from '../interface/CartItemType';
 import { InventoryItemType } from '../interface/InventoryItemType';
 import { CartContext } from './cart-context';
@@ -66,12 +66,18 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const defaultCartState: CartState = { items: [], totalAmount: 0 };
+let defaultCartState: CartState = localStorage.getItem('cartState')
+  ? JSON.parse(localStorage.getItem('cartState')!)
+  : { items: [], totalAmount: 0 };
 
 interface CartProviderProps {}
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, dispatchCart] = useReducer(cartReducer, defaultCartState);
+
+  useEffect(() => {
+    localStorage.setItem('cartState', JSON.stringify(cart));
+  }, [cart]);
 
   const addItemToCart = (item: InventoryItemType) => {
     dispatchCart({ type: 'ADD_ITEM', payload: item });
