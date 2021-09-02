@@ -1,5 +1,5 @@
 import express from 'express';
-
+import { prisma } from './db/prisma';
 const main = async () => {
   const app = express();
 
@@ -15,6 +15,8 @@ const main = async () => {
   });
 };
 
-main().catch((err) => {
-  console.log(err.message);
-});
+main()
+  .catch((err) => {
+    console.log(err.message);
+  })
+  .finally(() => prisma.$disconnect());
