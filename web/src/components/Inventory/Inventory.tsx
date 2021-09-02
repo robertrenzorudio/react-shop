@@ -1,20 +1,49 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/cart-context';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
 import { InventoryItemType } from '../../interface/InventoryItemType';
-import INVENTORY from '../../data/inventory';
 
 interface InventoryProps {}
 
 export const Inventory: React.FC<InventoryProps> = () => {
   const cartCtx = useContext(CartContext);
+  const [inventory, setInventory] = useState<InventoryItemType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchInventory = async () => {
+      const res = await fetch('https://api-react-shop.herokuapp.com/inventory');
+      const data = (await res.json()) as {
+        inventory: (InventoryItemType & {
+          image: string;
+        })[];
+      };
+
+      const transformedData: InventoryItemType[] = data.inventory.map(
+        ({ id, manufacturer, name, price, formattedPrice, image }) => {
+          return {
+            id,
+            manufacturer,
+            name,
+            price,
+            formattedPrice,
+            imgSrc: image,
+          };
+        }
+      );
+      setInventory(transformedData);
+      setIsLoading(false);
+    };
+
+    fetchInventory();
+  }, []);
 
   const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item!);
   };
 
-  const inventory = INVENTORY.map((item) => {
+  const inventoryJSX = inventory.map((item) => {
     return (
       <InventoryItem key={item.id} item={item} onAddToCart={addToCartHandler} />
     );
@@ -22,7 +51,17 @@ export const Inventory: React.FC<InventoryProps> = () => {
 
   return (
     <Flex direction="row" width="80%" justifyContent="space-around" wrap="wrap">
-      {inventory}
+      {!isLoading ? (
+        inventoryJSX
+      ) : (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      )}
     </Flex>
   );
 };
