@@ -1,5 +1,4 @@
 import express from 'express';
-import { prisma } from '../db/prisma';
 
 const inventoryRouter = express.Router();
 

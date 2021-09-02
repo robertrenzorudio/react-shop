@@ -8,7 +8,7 @@ dotenv.config({ path: '.env.dev' });
 const main = async () => {
   const app = express();
 
-  app.use('/assets', express.static('public/inventory'));
+  app.use('/public', express.static('public'));
   app.use('/inventory', inventoryRouter);
 
   app.get('/', (_, res) => {
