@@ -12,7 +12,7 @@ generator client {
 
 model Item {
   id             String @id @default(uuid())
-  name           String
+  name           String @unique
   manufacturer   String
   price          Int
   formattedPrice String
