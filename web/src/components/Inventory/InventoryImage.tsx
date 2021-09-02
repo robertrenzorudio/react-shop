@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Spinner, Box } from '@chakra-ui/react';
+import { Image, Spinner, Flex } from '@chakra-ui/react';
 
 interface InventoryImageProps {
   src: string;
@@ -17,14 +17,14 @@ export const InventoryImage: React.FC<InventoryImageProps> = ({ src }) => {
       objectFit="contain"
       src={src}
       fallback={
-        <Box
+        <Flex
           height={height}
           width={width}
-          lineHeight={`${height}px`}
-          align="center"
+          alignItems="center"
+          justifyContent="center"
         >
           <Spinner size="xl" speed="1.0s" />
-        </Box>
+        </Flex>
       }
     />
   );
