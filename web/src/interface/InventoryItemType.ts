@@ -1,5 +1,5 @@
 export interface InventoryItemType {
-  id: number;
+  id: string;
   manufacturer: string;
   name: string;
   price: number;
