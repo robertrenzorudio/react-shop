@@ -3,19 +3,18 @@ import { CartContext } from '../../context/cart-context';
 import { Flex } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
 import { InventoryItemType } from '../../interface/InventoryItemType';
+import INVENTORY from '../../data/inventory';
 
-interface InventoryProps {
-  invetoryItems: InventoryItemType[];
-}
+interface InventoryProps {}
 
-export const Inventory: React.FC<InventoryProps> = ({ invetoryItems }) => {
+export const Inventory: React.FC<InventoryProps> = () => {
   const cartCtx = useContext(CartContext);
 
   const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item!);
   };
 
-  const inventory = invetoryItems.map((item) => {
+  const inventory = INVENTORY.map((item) => {
     return (
       <InventoryItem key={item.id} item={item} onAddToCart={addToCartHandler} />
     );

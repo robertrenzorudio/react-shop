@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./react-shop.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Inventory {
+  id             String @id @default(uuid())
+  name           String @unique
+  manufacturer   String
+  price          Int
+  formattedPrice String
+  image          String
+}
