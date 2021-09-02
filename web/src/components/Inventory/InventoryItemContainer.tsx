@@ -12,8 +12,8 @@ export const InventoryItemContainer: React.FC<InventoryItemContainerProps> = ({
       <Box
         role={'group'}
         p={6}
-        maxW={'330px'}
-        w={'full'}
+        w={'330px'}
+        h={'424px'}
         boxShadow="base"
         rounded={'lg'}
         mb="1.5rem"

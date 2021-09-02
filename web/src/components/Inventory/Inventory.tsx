@@ -39,6 +39,10 @@ export const Inventory: React.FC<InventoryProps> = () => {
     fetchInventory();
   }, []);
 
+  if (isLoading) {
+    return <Spinner speed="1s" size="xl" mt={100} />;
+  }
+
   const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item!);
   };
@@ -51,17 +55,7 @@ export const Inventory: React.FC<InventoryProps> = () => {
 
   return (
     <Flex direction="row" width="80%" justifyContent="space-around" wrap="wrap">
-      {!isLoading ? (
-        inventoryJSX
-      ) : (
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
-      )}
+      {inventoryJSX}
     </Flex>
   );
 };
