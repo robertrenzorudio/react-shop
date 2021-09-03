@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useFetch } from '../../hooks/useFetch';
 import { CartContext } from '../../context/cart-context';
 import { Flex, Spinner } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
@@ -8,19 +9,21 @@ interface InventoryProps {}
 
 export const Inventory: React.FC<InventoryProps> = () => {
   const cartCtx = useContext(CartContext);
-  const [inventory, setInventory] = useState<InventoryItemType[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const {
+    data: inventory,
+    isFetching: isLoading,
+    sendRequest,
+  } = useFetch<InventoryItemType[]>([]);
 
   useEffect(() => {
-    const fetchInventory = async () => {
-      const res = await fetch('https://api-react-shop.herokuapp.com/inventory');
-      const data = (await res.json()) as {
-        inventory: (InventoryItemType & {
-          image: string;
-        })[];
-      };
+    type FetchType = {
+      inventory: (InventoryItemType & {
+        image: string;
+      })[];
+    };
 
-      const transformedData: InventoryItemType[] = data.inventory.map(
+    const dataTransformFn = (data: FetchType) => {
+      return data.inventory.map(
         ({ id, manufacturer, name, price, formattedPrice, image }) => {
           return {
             id,
@@ -31,13 +34,14 @@ export const Inventory: React.FC<InventoryProps> = () => {
             imgSrc: image,
           };
         }
-      );
-      setInventory(transformedData);
-      setIsLoading(false);
+      ) as InventoryItemType[];
     };
 
-    fetchInventory();
-  }, []);
+    sendRequest(
+      { input: 'https://api-react-shop.herokuapp.com/inventory' },
+      dataTransformFn
+    );
+  }, [sendRequest]);
 
   if (isLoading) {
     return <Spinner speed="1s" size="xl" mt={100} />;
