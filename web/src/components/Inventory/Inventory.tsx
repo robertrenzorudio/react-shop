@@ -39,10 +39,7 @@ export const Inventory: React.FC<InventoryProps> = () => {
       ) as InventoryItemType[];
     };
 
-    sendRequest(
-      { input: 'https://api-react-shop..com/inventory' },
-      dataTransformFn
-    );
+    sendRequest({ input: `${process.env.REACT_APP_API_URL}` }, dataTransformFn);
   }, [sendRequest]);
 
   if (error) {
