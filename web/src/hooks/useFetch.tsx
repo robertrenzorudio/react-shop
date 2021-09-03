@@ -39,6 +39,7 @@ export const useFetch = <T,>(initState: T) => {
         setIsFetching(false);
       } catch {
         setError(true);
+        setIsFetching(false);
       }
     },
     []
