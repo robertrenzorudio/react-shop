@@ -12,11 +12,20 @@ import { CartProvider } from './context/CartProvider';
 import { Cart } from './components/Cart/Cart';
 import { Checkout } from './components/Checkout/Checkout';
 import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+});
 
 const theme = extendTheme({
   components: {
     Steps,
   },
+  breakpoints,
 });
 
 export const App = () => {
