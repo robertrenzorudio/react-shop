@@ -35,7 +35,7 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
     addressLine2: yup.string(),
     city: yup.string().required('City is Required'),
     area: yup.string().required('State/Province/Region is Required'),
-    zipCode: yup.string().required('Zip / Postal Code is Required'),
+    zipCode: yup.string().required('Zip/Postal Code is Required'),
     country: yup.string().required('Country is Required'),
   });
 
