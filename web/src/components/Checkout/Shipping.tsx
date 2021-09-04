@@ -112,6 +112,7 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
                   { value: 'us', title: 'United States' },
                   { value: 'ph', title: 'Philippines' },
                 ]}
+                placeholder="Select a country"
               />
 
               <MyTextField
