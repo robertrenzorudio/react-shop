@@ -30,8 +30,8 @@ export const useFetch = <T,>(initState: T) => {
         const data = await res.json();
 
         if (dataTransformFn) {
-          const traformedData = dataTransformFn(data);
-          setData(traformedData);
+          const transformedData = dataTransformFn(data);
+          setData(transformedData);
         } else {
           // No data transformation needed.
           setData(data as T);
