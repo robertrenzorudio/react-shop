@@ -1,13 +1,13 @@
 import React from 'react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { Flex, Button, HStack } from '@chakra-ui/react';
+import { Shipping } from './Shipping';
 
-const content1 = <Flex py={4}>react + typescript</Flex>;
 const content2 = <Flex py={4}>hello world</Flex>;
 const content3 = <Flex py={4}>lorem ispum</Flex>;
 
 const steps = [
-  { label: 'Shipping', content: content1 },
+  { label: 'Shipping', content: <Shipping /> },
   { label: 'Payment', content: content2 },
   { label: 'Review', content: content3 },
 ];
@@ -18,7 +18,11 @@ export const Checkout = () => {
   });
 
   return (
-    <Flex width="90%" overflow="scroll" direction="column" align="center" p={4}>
+    <Flex
+      width={{ sm: '100%', md: '80%', lg: '70%', xl: '60%' }}
+      direction="column"
+      p={4}
+    >
       <Steps activeStep={activeStep} colorScheme="teal">
         {steps.map(({ label, content }) => (
           <Step label={label} key={label}>
@@ -27,7 +31,7 @@ export const Checkout = () => {
         ))}
       </Steps>
 
-      <HStack alignSelf="flex-end">
+      <HStack alignSelf="flex-end" mt={4} mr={4}>
         <Button
           onClick={() => {
             prevStep();
