@@ -5,6 +5,7 @@ import { VStack, Stack } from '@chakra-ui/layout';
 import { useMediaQuery } from '@chakra-ui/media-query';
 import { Button } from '@chakra-ui/button';
 import * as yup from 'yup';
+import { MySelectField } from '../Form/MySelectField';
 
 interface ShippingProps {
   onNext: () => void;
@@ -53,7 +54,7 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
         country: '',
       }}
       onSubmit={(values) => {
-        //console.log(values);
+        console.log(values);
         onNext();
       }}
       validationSchema={shippingSchema}
@@ -103,7 +104,15 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
               w="100%"
               spacing={isSmall ? 4 : 10}
             >
-              <MyTextField name="city" label="City" isRequired={true} />
+              <MySelectField
+                name="country"
+                label="Country"
+                isRequired={true}
+                options={[
+                  { value: 'us', title: 'United States' },
+                  { value: 'ph', title: 'Philippines' },
+                ]}
+              />
 
               <MyTextField
                 name="area"
@@ -117,13 +126,12 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
               w="100%"
               spacing={isSmall ? 4 : 10}
             >
+              <MyTextField name="city" label="City" isRequired={true} />
               <MyTextField
                 name="zipCode"
                 label="Zip/Postal Code"
                 isRequired={true}
               />
-
-              <MyTextField name="country" label="Country" isRequired={true} />
             </Stack>
             <Button
               type="submit"

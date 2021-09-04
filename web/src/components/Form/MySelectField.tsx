@@ -25,12 +25,12 @@ export const MySelectField: React.FC<MySelectFieldProps> = ({
   let optionsJSX;
   if (Array.isArray(options)) {
     optionsJSX = options.map(({ value, title }) => (
-      <option value={value} id={title}>
+      <option value={value} key={title}>
         {title}
       </option>
     ));
   } else {
-    <option value={options.value} id={options.title}>
+    <option value={options.value} key={options.title}>
       {options.title}
     </option>;
   }
