@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import {
   Button,
@@ -55,6 +56,14 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
 
   let itemsJSX = cartIsEmpty ? cartEmptyJSX : cartItemsJSX;
 
+  // Router
+  const { pathname: currPath } = useLocation<{ pathname: string }>();
+  const history = useHistory();
+  const checkoutHandler = () => {
+    history.push('/checkout');
+    onCartClose();
+  };
+
   return (
     <Modal
       blockScrollOnMount={false}
@@ -90,7 +99,8 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
           <Button
             colorScheme="teal"
             mr={3}
-            isDisabled={cartCtx.items.length === 0}
+            isDisabled={cartCtx.items.length === 0 || currPath === '/checkout'}
+            onClick={checkoutHandler}
           >
             Checkout
           </Button>

@@ -43,7 +43,7 @@ export const Checkout = () => {
           colorScheme={activeStep === 2 ? 'teal' : 'gray'}
           isDisabled={activeStep === 2}
         >
-          {activeStep !== 2 ? 'Next' : 'Checkout'}
+          {activeStep !== 2 ? 'Next' : 'Place your order'}
         </Button>
       </HStack>
     </Flex>
