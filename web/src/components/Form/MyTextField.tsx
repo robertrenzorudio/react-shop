@@ -14,18 +14,21 @@ type MyTextFieldProps = {
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const MyTextField: React.FC<MyTextFieldProps> = ({
+  name,
   label,
   isRequired,
   size: _,
   ...props
 }) => {
-  const [field, { error }] = useField(props);
-
+  const [field, meta] = useField(name);
   return (
-    <FormControl isInvalid={!!error} isRequired={isRequired}>
+    <FormControl
+      isInvalid={!!(meta.touched && meta.error)}
+      isRequired={isRequired}
+    >
       <FormLabel htmlFor={field.name}>{label}</FormLabel>
       <Input {...field} {...props} id={field.name} />
-      <FormErrorMessage>{error}</FormErrorMessage>
+      <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
   );
 };
