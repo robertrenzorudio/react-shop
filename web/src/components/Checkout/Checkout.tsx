@@ -26,7 +26,7 @@ export const Checkout = () => {
 
   return (
     <Flex
-      width={{ sm: '100%', md: '80%', lg: '70%', xl: '60%' }}
+      width={{ sm: '100%', md: '80%', lg: '70%', xl: '50%' }}
       direction="column"
       p={4}
     >
