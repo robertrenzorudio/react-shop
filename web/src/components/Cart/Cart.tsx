@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import {
   Button,
@@ -14,6 +15,7 @@ import {
   Text,
   Spacer,
   Box,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { CartItem } from './CartItem';
 import { CartContext } from '../../context/cart-context';
@@ -25,6 +27,7 @@ interface CartProps {
 }
 export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   const cartCtx = useContext(CartContext);
+  const [isSmall] = useMediaQuery('(max-width: 425px)');
 
   const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item);
@@ -37,10 +40,16 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   const cartItemsJSX = cartCtx.items.map((item) => {
     return (
       <CartItem
+        align="center"
+        textAlign="left"
+        marginBottom="2"
+        h="70px"
+        p={2}
         key={item.id}
         item={item}
         onAdd={addToCartHandler}
         onRemove={removeFromCartHandler}
+        showImage={!isSmall}
       />
     );
   });
@@ -54,6 +63,14 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   const cartIsEmpty = cartCtx.items.length === 0;
 
   let itemsJSX = cartIsEmpty ? cartEmptyJSX : cartItemsJSX;
+
+  // Router
+  const { pathname: currPath } = useLocation<{ pathname: string }>();
+  const history = useHistory();
+  const checkoutHandler = () => {
+    history.push('/checkout');
+    onCartClose();
+  };
 
   return (
     <Modal
@@ -79,7 +96,7 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
             {itemsJSX}
           </Box>
           {cartCtx.items.length === 0 && <Divider />}
-          <Flex align="center" m={2}>
+          <Flex align="center" mb={1} mt={2}>
             <Text fontWeight="extrabold">Total Amount</Text>
             <Spacer />
             <Text fontWeight="extrabold">${cartCtx.totalAmount}</Text>
@@ -90,7 +107,8 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
           <Button
             colorScheme="teal"
             mr={3}
-            isDisabled={cartCtx.items.length === 0}
+            isDisabled={cartCtx.items.length === 0 || currPath === '/checkout'}
+            onClick={checkoutHandler}
           >
             Checkout
           </Button>
