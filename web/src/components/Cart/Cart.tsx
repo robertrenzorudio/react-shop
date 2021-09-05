@@ -15,6 +15,7 @@ import {
   Text,
   Spacer,
   Box,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { CartItem } from './CartItem';
 import { CartContext } from '../../context/cart-context';
@@ -26,6 +27,7 @@ interface CartProps {
 }
 export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   const cartCtx = useContext(CartContext);
+  const [isSmall] = useMediaQuery('(max-width: 425px)');
 
   const addToCartHandler = (item: InventoryItemType) => {
     cartCtx.addItem(item);
@@ -38,10 +40,16 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
   const cartItemsJSX = cartCtx.items.map((item) => {
     return (
       <CartItem
+        align="center"
+        textAlign="left"
+        marginBottom="2"
+        h="70px"
+        p={2}
         key={item.id}
         item={item}
         onAdd={addToCartHandler}
         onRemove={removeFromCartHandler}
+        showImage={!isSmall}
       />
     );
   });
@@ -88,7 +96,7 @@ export const Cart: React.FC<CartProps> = ({ cartIsOpen, onCartClose }) => {
             {itemsJSX}
           </Box>
           {cartCtx.items.length === 0 && <Divider />}
-          <Flex align="center" m={2}>
+          <Flex align="center" mb={1} mt={2}>
             <Text fontWeight="extrabold">Total Amount</Text>
             <Spacer />
             <Text fontWeight="extrabold">${cartCtx.totalAmount}</Text>

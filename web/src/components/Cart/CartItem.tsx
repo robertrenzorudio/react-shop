@@ -8,32 +8,38 @@ import {
   Spacer,
   Divider,
   Image,
+  FlexProps,
 } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { CartItemType } from '../../interface/CartItemType';
 import { InventoryItemType } from '../../interface/InventoryItemType';
 
-interface CartItemProps {
+interface CartItemProps extends FlexProps {
   item: CartItemType;
   onAdd: (id: InventoryItemType) => void;
   onRemove: (item: InventoryItemType) => void;
+  showImage: boolean;
 }
 
 export const CartItem: React.FC<CartItemProps> = ({
   item,
   onAdd,
   onRemove,
+  showImage,
+  ...props
 }) => {
   return (
     <>
-      <Flex align="center" marginBottom="2" h="70px" p={2}>
-        <Image
-          src={item.imgSrc}
-          h="90%"
-          w={70}
-          mr={5}
-          objectFit="contain"
-        ></Image>
+      <Flex {...props}>
+        {showImage && (
+          <Image
+            src={item.imgSrc}
+            h="90%"
+            w={70}
+            mr={5}
+            objectFit="contain"
+          ></Image>
+        )}
         <Box>
           <Text fontWeight="extrabold">{item.name}</Text>
           <Text color="gray.500">${item.price}</Text>
