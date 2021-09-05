@@ -2,14 +2,7 @@ import React from 'react';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { Flex } from '@chakra-ui/react';
 import { Shipping } from './Shipping';
-
-const content2 = <Flex py={4}>hello world</Flex>;
-const content3 = <Flex py={4}>lorem ispum</Flex>;
-
-const steps = [
-  { label: 'Payment', content: content2 },
-  { label: 'Review', content: content3 },
-];
+import { Payment } from './Payment';
 
 export const Checkout = () => {
   const { nextStep, prevStep, activeStep } = useSteps({
@@ -34,11 +27,9 @@ export const Checkout = () => {
         <Step label={'Shipping'} key={'Shipping'}>
           {<Shipping onNext={nextHandler} />}
         </Step>
-        {steps.map(({ label, content }) => (
-          <Step label={label} key={label}>
-            {content}
-          </Step>
-        ))}
+        <Step label={'Payment'} key={'Payment'}>
+          {<Payment onPrev={prevHandler} onNext={nextHandler} />}
+        </Step>
       </Steps>
     </Flex>
   );
