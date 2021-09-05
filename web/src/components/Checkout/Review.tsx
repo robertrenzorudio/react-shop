@@ -39,6 +39,8 @@ export const Review: React.FC<ReviewProps> = ({ onPrev }) => {
     );
   });
 
+  const tax = cartCtx.totalAmount * 0.103;
+  const orderTotal = cartCtx.totalAmount + tax;
   return (
     <Stack spacing={6} p={isSmall ? 0 : 10} pr={5}>
       <Stack direction="column" spacing={4}>
@@ -76,7 +78,12 @@ export const Review: React.FC<ReviewProps> = ({ onPrev }) => {
           fontSize="lg"
         >
           <Text>Tax</Text>
-          <Text>${cartCtx.totalAmount * 0.103}</Text>
+          <Text>${tax.toFixed(2)}</Text>
+        </HStack>
+
+        <HStack justifyContent="space-between" fontWeight="bold" fontSize="lg">
+          <Text>Order Total</Text>
+          <Text>${orderTotal.toFixed(2)}</Text>
         </HStack>
       </Stack>
 
