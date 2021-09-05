@@ -22,8 +22,8 @@ export const Payment: React.FC<PaymentProps> = ({ onNext, onPrev }) => {
     cardNumber: yup
       .string()
       .matches(/^[0-9]+$/, 'Must only contain digits')
-      .min(14, 'Invalid Card Number')
-      .max(15, 'Invalid Card Number')
+      .min(13, 'Invalid Card Number')
+      .max(19, 'Invalid Card Number')
       .required('Cardnumber is Required'),
 
     expirationDate: yup
