@@ -53,9 +53,11 @@ export const Shipping: React.FC<ShippingProps> = ({ onNext }) => {
         zipCode: '',
         country: '',
       }}
-      onSubmit={(values) => {
-        console.log(values);
-        onNext();
+      onSubmit={(_, { setSubmitting }) => {
+        setTimeout(() => {
+          onNext();
+          setSubmitting(false);
+        }, 1000);
       }}
       validationSchema={shippingSchema}
     >
