@@ -26,7 +26,13 @@ export const Payment: React.FC<PaymentProps> = ({ onNext, onPrev }) => {
       .max(15, 'Invalid Card Number')
       .required('Cardnumber is Required'),
 
-    expirationDate: yup.string().required('Expiration Date is Required'),
+    expirationDate: yup
+      .string()
+      .matches(
+        /^(0[1-9]|1[0-2])\/([0-9]{4})$/,
+        'Invalid Format. Use the MM/YYYY Format'
+      )
+      .required('Expiration Date is Required'),
 
     cvv: yup
       .string()
@@ -71,10 +77,10 @@ export const Payment: React.FC<PaymentProps> = ({ onNext, onPrev }) => {
                 isRequired={true}
               />
               <MyTextField
-                type="month"
                 name="expirationDate"
                 label="Expiration date"
                 isRequired={true}
+                placeholder="MM/YYYY"
               />
               <MyTextField name="cvv" label="CVV" isRequired={true} />
             </Stack>
