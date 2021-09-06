@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { CartContext } from '../../context/cart-context';
-import { Box, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Spinner, Text } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
 import { InventoryItemType } from '../../interface/InventoryItemType';
 import { BiError } from 'react-icons/bi';
