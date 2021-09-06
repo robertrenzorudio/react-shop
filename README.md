@@ -27,7 +27,7 @@
 $ git clone https://github.com/robertrenzorudio/react-shop/
 $ cd react-shop
 ```
-
+---
 ### Install dependencies
 #### With yarn
 ```
@@ -40,6 +40,7 @@ $ yarn install
 $ npm install
 ```
 
+---
 ### Run the server
 #### With yarn
 ```
@@ -55,7 +56,8 @@ $ npm run build
 $ npm run start
 ```
 
-#### Run the React app
+---
+### Run the React app
 #### With yarn
 ```
 $ cd web 
