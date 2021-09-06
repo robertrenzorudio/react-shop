@@ -1,59 +1,69 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center" >
+  React Shop
+</h1>
 
-## Available Scripts
+<h4 align="center">
+  A full stack e-commerce app <br/><br/>
+  View the demo <a href="https://react-shop-tau.vercel.app/">here</a>
+</h4>
 
-In the project directory, you can run:
+## Stack
+### Frontend 
 
-### `yarn start`
+| [React](https://reactjs.org) | [Chakra UI](https://chakra-ui.com) | [TypeScript](https://www.typescriptlang.org) | 
+| :-----------: | :-----------: | :-----------: | 
+| <a title="Facebook, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:React-icon.svg"><img width="64" alt="React-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/64px-React-icon.svg.png"></a> | <img src="https://i.imgur.com/EMykZb3.png" alt="chakra-ui" width="50">| <a title="™/®Microsoft, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Typescript_logo_2020.svg"><img width="64" alt="Typescript logo 2020" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/64px-Typescript_logo_2020.svg.png"></a> |
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Backend
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+| [Node.js](https://nodejs.org/en/) | [Express.js](https://expressjs.com)  | [TypeScript](https://www.typescriptlang.org) | 
+| :-----------: | :-----------: | :-----------: | 
+| <a title="node.js authors, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Node.js_logo.svg"><img width="64" alt="Node.js logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/64px-Node.js_logo.svg.png"></a>| <a title="expressjs developers, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Expressjs.png"><img width="64" alt="Expressjs" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png"></a>|<a title="™/®Microsoft, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Typescript_logo_2020.svg"><img width="64" alt="Typescript logo 2020" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/64px-Typescript_logo_2020.svg.png"></a>|
 
-### `yarn test`
+## Run Locally
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+### Clone the repo
+```
+$ git clone https://github.com/robertrenzorudio/react-shop/
+$ cd react-shop
+```
 
-### `yarn build`
+### Install dependencies
+#### With yarn
+```
+$ yarn or 
+$ yarn install
+```
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
+#### With npm
+```
+$ npm install
+```
 
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
+### Run the server
+#### With yarn
+```
+$ cd server 
+$ yarn build
+$ yarn start
+```
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+#### With npm
+```
+$ cd server
+$ npm run build
+$ npm run start
+```
 
-### `yarn eject`
+#### Run the React app
+#### With yarn
+```
+$ cd web 
+$ yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
-
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### With npm
+```
+$ cd web
+$ npm run start
+```
