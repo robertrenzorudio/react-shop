@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { CartContext } from '../../context/cart-context';
-import { Flex, Spinner, Text } from '@chakra-ui/react';
+import { Box, Flex, Spinner, Text } from '@chakra-ui/react';
 import { InventoryItem } from './InventoryItem';
 import { InventoryItemType } from '../../interface/InventoryItemType';
 import { BiError } from 'react-icons/bi';
@@ -67,7 +67,15 @@ export const Inventory: React.FC<InventoryProps> = () => {
   }
 
   if (isLoading) {
-    return <Spinner speed="1s" size="xl" mt={100} />;
+    return (
+      <Flex direction="column" alignItems="center" textAlign="center" p={2}>
+        <Text fontWeight="thin" fontSize="xl">
+          Heroku server may need to wake up, loading may take some time.
+        </Text>
+
+        <Spinner speed="1s" size="xl" mt={30} />
+      </Flex>
+    );
   }
 
   const addToCartHandler = (item: InventoryItemType) => {
