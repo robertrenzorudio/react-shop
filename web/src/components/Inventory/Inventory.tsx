@@ -69,10 +69,6 @@ export const Inventory: React.FC<InventoryProps> = () => {
   if (isLoading) {
     return (
       <Flex direction="column" alignItems="center" textAlign="center" p={2}>
-        <Text fontWeight="thin" fontSize="xl">
-          Heroku server may need to wake up, loading may take some time.
-        </Text>
-
         <Spinner speed="1s" size="xl" mt={30} />
       </Flex>
     );
